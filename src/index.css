@@ -8,4 +8,14 @@
 @theme {
   --font-belwe: "Belwe", sans-serif;
   --font-sans: "Open Sans", sans-serif;
+
+  --color-background: #030712;
+  --color-surface: #1c1917;
+  --color-primary: #f59e0b;
+  --color-primary-soft: #fbbf24;
+  --color-base: #e5e7eb;
+  --color-muted: #9ca3af;
+  --color-subtle: #6b7280;
+  --color-contrast: #111827;
+  --color-accent: #60a5fa;
 }
