@@ -1,1 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "tailwindcss";
+@font-face {
+  font-family: "Belwe";
+  src: url("/fonts/belwe-bold.woff") format("woff");
+}
+
+@theme {
+  --font-belwe: "Belwe", sans-serif;
+  --font-sans: "Open Sans", sans-serif;
+}
