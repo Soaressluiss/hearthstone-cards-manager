@@ -1,0 +1,58 @@
+import { CardClass, CardType } from "../types/Card";
+
+export const mockCards = [
+  {
+    id: 1,
+    nome: "Dragão de Fogo",
+    descricao: "Um poderoso dragão que cospe chamas devastadoras.",
+    ataque: 9,
+    defesa: 7,
+    tipo: CardType.CRIATURA,
+    classe: CardClass.MAGO,
+  },
+  {
+    id: 2,
+    nome: "Escudo Sagrado",
+    descricao: "Concede proteção divina a um aliado.",
+    ataque: 0,
+    defesa: 8,
+    tipo: CardType.MAGIA,
+    classe: CardClass.PALADINO,
+  },
+  {
+    id: 3,
+    nome: "Flecha Precisa",
+    descricao: "Um disparo certeiro que nunca erra o alvo.",
+    ataque: 6,
+    defesa: 1,
+    tipo: CardType.MAGIA,
+    classe: CardClass.CACADOR,
+  },
+  {
+    id: 4,
+    nome: "Guardião da Floresta",
+    descricao: "Protege a natureza e seus aliados com força ancestral.",
+    ataque: 5,
+    defesa: 6,
+    tipo: CardType.CRIATURA,
+    classe: CardClass.DRUIDA,
+  },
+  {
+    id: 5,
+    nome: "Golem Arcano",
+    descricao: "Uma criatura mágica resistente criada por feitiços antigos.",
+    ataque: 7,
+    defesa: 9,
+    tipo: CardType.CRIATURA,
+    classe: CardClass.QUALQUER,
+  },
+  {
+    id: 6,
+    nome: "Explosão Arcana",
+    descricao: "Causa dano mágico em área a todos os inimigos.",
+    ataque: 8,
+    defesa: 0,
+    tipo: CardType.MAGIA,
+    classe: CardClass.MAGO,
+  },
+];

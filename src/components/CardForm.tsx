@@ -21,7 +21,11 @@ export default function CardForm() {
 
   const onSubmit = async (data: CardFormData) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+    const newCard = {
+      id: Date.now(),
+      ...data,
+    };
+    console.log(newCard);
     reset();
   };
 

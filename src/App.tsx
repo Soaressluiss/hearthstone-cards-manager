@@ -1,4 +1,4 @@
-import CardForm from "./components/CardForm";
+import CardList from "./components/CardList";
 import Header from "./components/Header";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
       <section className="debug min-h-screen w-full max-w-7xl px-4 py-6">
         <Header />
         <div className="mt-10 flex w-full gap-3">
-          <CardForm />
+          <CardList />
         </div>
       </section>
     </main>
