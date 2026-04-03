@@ -27,7 +27,7 @@ export default function CardList() {
         {mockCards.length === 0 ? (
           <p className="text-muted text-center">Nenhuma carta adicionada</p>
         ) : (
-          <div className="grid w-full grid-cols-2 place-items-center gap-10 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid w-full grid-cols-2 place-items-center gap-10 px-2 sm:grid-cols-3 lg:grid-cols-5">
             <CreateCard handleOpenModal={handleOpenModal} />
             {mockCards.map((card) => (
               <CardItem

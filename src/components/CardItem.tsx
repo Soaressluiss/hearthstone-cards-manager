@@ -92,7 +92,7 @@ export default function CardItem({ card, onEdit, onDelete }: Props) {
                   e.stopPropagation();
                   onEdit(card);
                 }}
-                className="font-belwe flex items-center gap-2 rounded bg-blue-600 px-4 py-2 text-white hover:scale-105"
+                className="font-belwe flex cursor-pointer items-center gap-2 rounded-lg bg-linear-to-r from-blue-700 to-blue-500 px-5 py-2 text-base shadow-lg transition-transform duration-200 hover:scale-105 hover:brightness-110 active:scale-95 active:brightness-90"
               >
                 <Pencil size={16} />
                 Editar
@@ -103,7 +103,7 @@ export default function CardItem({ card, onEdit, onDelete }: Props) {
                   e.stopPropagation();
                   onDelete(1);
                 }}
-                className="font-belwe flex items-center gap-2 rounded bg-red-600 px-4 py-2 text-white hover:scale-105"
+                className="font-belwe flex cursor-pointer items-center gap-2 rounded-lg bg-linear-to-r from-red-700 to-red-500 px-5 py-2 text-base shadow-lg transition-transform duration-200 hover:scale-105 hover:brightness-110 active:scale-95 active:brightness-90"
               >
                 <Trash2 size={16} />
                 Excluir
