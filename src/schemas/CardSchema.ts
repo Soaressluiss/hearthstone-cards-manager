@@ -5,7 +5,7 @@ export const cardSchema = z.object({
   nome: z
     .string()
     .min(3, "Nome deve ter pelo menos 3 caracteres")
-    .max(50, "Nome muito longo"),
+    .max(40, "Nome muito longo"),
   descricao: z
     .string()
     .min(1, "Descrição obrigatória")
@@ -25,3 +25,12 @@ export const cardSchema = z.object({
 });
 
 export type CardFormData = z.infer<typeof cardSchema>;
+
+export const defaultValues: CardFormData = {
+  nome: "",
+  tipo: CardType.MAGIA,
+  classe: CardClass.QUALQUER,
+  ataque: 0,
+  defesa: 0,
+  descricao: "",
+};

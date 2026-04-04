@@ -1,20 +1,13 @@
 import { useState } from "react";
-import { mockCards } from "../mock/mockCards";
-import type { CardFormData } from "../schemas/CardSchema";
 import CardItem from "./CardItem";
 import CreateCard from "./CreateCard";
 import CardForm from "./CardForm";
+import { useCards } from "../context/CardContext";
 
 export default function CardList() {
+  const { cards } = useCards();
   const [openModal, setOpen] = useState(false);
   const handleOpenModal = (isOpen: boolean) => setOpen(isOpen);
-
-  const onEdit = (card: CardFormData) => {
-    console.log(card);
-  };
-  const onDelete = (id: number) => {
-    console.log(id);
-  };
 
   return (
     <>
@@ -23,22 +16,18 @@ export default function CardList() {
         <h3 className="font-belwe text-primary text-center text-4xl">
           Minhas cartas
         </h3>
-
-        {mockCards.length === 0 ? (
-          <p className="text-muted text-center">Nenhuma carta adicionada</p>
-        ) : (
-          <div className="grid w-full grid-cols-2 place-items-center gap-10 px-2 sm:grid-cols-3 lg:grid-cols-5">
-            <CreateCard handleOpenModal={handleOpenModal} />
-            {mockCards.map((card) => (
-              <CardItem
-                key={card.id}
-                card={card}
-                onEdit={onEdit}
-                onDelete={onDelete}
-              />
-            ))}
-          </div>
-        )}
+        <div
+          className={`grid w-full place-items-center gap-10 px-2 ${cards.length === 0 ? "col-span-1" : "sm:grid-cols-3 lg:grid-cols-5"}`}
+        >
+          <CreateCard handleOpenModal={handleOpenModal} />
+          {cards.map((card) => (
+            <CardItem
+              key={card.id}
+              card={card}
+              handleOpenModal={handleOpenModal}
+            />
+          ))}
+        </div>
       </section>
     </>
   );

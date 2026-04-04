@@ -1,54 +1,77 @@
-/* eslint-disable react-hooks/incompatible-library */
 import { useForm } from "react-hook-form";
-import { cardSchema, type CardFormData } from "../schemas/CardSchema";
+import {
+  cardSchema,
+  defaultValues,
+  type CardFormData,
+} from "../schemas/CardSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CardClass, CardType } from "../types/Card";
 import { Dialog, DialogClose, DialogContent, DialogTitle } from "./ui/dialog";
-import { useRef } from "react";
+import { useCards } from "../context/CardContext";
+import { useEffect } from "react";
 
 interface CardFormProps {
   openModal: boolean;
   handleOpenModal: (isOpen: boolean) => void;
 }
 
+function generateMana() {
+  return Math.floor(Math.random() * 11);
+}
+
 export default function CardForm({
   openModal,
   handleOpenModal,
 }: CardFormProps) {
+  const { addCard, getCardById, cardId, updateCard } = useCards();
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors, isValid, isSubmitting },
   } = useForm<CardFormData>({
     resolver: zodResolver(cardSchema),
     mode: "onChange",
+    defaultValues: defaultValues,
   });
-  const currentId = useRef(0);
 
-  const tipo = watch("tipo");
-  const classe = watch("classe");
+  const selectedCard = cardId ? getCardById(cardId) : null;
+  const isEditing = !!selectedCard;
 
-  function generateId() {
-    currentId.current += 1;
-    return currentId.current;
-  }
-  const onSubmit = async (data: CardFormData) => {
+  useEffect(() => {
+    if (cardId && selectedCard) {
+      reset(selectedCard);
+    } else {
+      reset(defaultValues);
+    }
+  }, [cardId, selectedCard, reset]);
+
+  const onSubmit = async (formData: CardFormData) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const newCard = {
-      id: generateId(),
-      mana: Math.floor(Math.random() * 11),
-      ...data,
+
+    const baseCard = {
+      mana: generateMana(),
+      ...formData,
     };
-    console.log(newCard);
+
+    if (!isEditing) {
+      addCard(baseCard);
+    } else {
+      updateCard(cardId!, {
+        ...baseCard,
+        mana: selectedCard?.mana ?? baseCard.mana,
+      });
+    }
     reset();
     handleOpenModal(false);
   };
 
   return (
     <Dialog open={openModal} onOpenChange={handleOpenModal}>
-      <DialogContent aria-describedby={undefined}>
+      <DialogContent
+        aria-describedby={undefined}
+        onInteractOutside={() => reset(defaultValues)}
+      >
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-surface border-primary-soft/40 flex w-full flex-col gap-2 rounded-xl border p-5 pb-8"
@@ -120,7 +143,7 @@ export default function CardForm({
             </label>
             <select
               {...register("tipo")}
-              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none ${!tipo ? "text-muted" : "text-base"} `}
+              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none`}
             >
               <option className="bg-surface" value="">
                 Selecione seu tipo
@@ -144,7 +167,7 @@ export default function CardForm({
             </label>
             <select
               {...register("classe")}
-              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none ${!classe ? "text-muted" : "text-base"} `}
+              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none`}
             >
               <option className="bg-surface" value="">
                 Selecione sua classe
@@ -163,7 +186,10 @@ export default function CardForm({
           </div>
 
           <div className="mt-2 flex items-center justify-center gap-4 self-end">
-            <DialogClose className="font-belwe text-muted h-full cursor-pointer px-4 py-2 hover:text-base">
+            <DialogClose
+              onClick={() => reset(defaultValues)}
+              className="font-belwe text-muted h-full cursor-pointer px-4 py-2 hover:text-base"
+            >
               Cancelar
             </DialogClose>
             <button
