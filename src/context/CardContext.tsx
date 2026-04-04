@@ -2,6 +2,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
@@ -40,7 +41,14 @@ interface CardContextType {
 const CardContext = createContext<CardContextType | null>(null);
 
 export function CardProvider({ children }: { children: ReactNode }) {
-  const [cards, setCards] = useState<Card[]>(mockCards);
+  const [cards, setCards] = useState<Card[]>(() => {
+    try {
+      const stored = localStorage.getItem("cards");
+      return stored ? JSON.parse(stored) : mockCards;
+    } catch {
+      return mockCards;
+    }
+  });
   const [cardId, setCardId] = useState<number | null>(null);
   const currentId = useRef(mockCards.length);
   const [filters, setFiltersState] = useState({
@@ -49,6 +57,10 @@ export function CardProvider({ children }: { children: ReactNode }) {
 
     classe: "",
   });
+
+  useEffect(() => {
+    localStorage.setItem("cards", JSON.stringify(cards));
+  }, [cards]);
 
   function setFilters(newFilters: Filters) {
     setFiltersState((prev) => ({
@@ -91,13 +103,9 @@ export function CardProvider({ children }: { children: ReactNode }) {
 
   const filteredCards = cards.filter((item) => {
     const search = filters.search.toLowerCase();
-
     const matchNome = item.nome.toLowerCase().includes(search);
-
     const matchID = !!+search && item.id === +search;
-
     const matchNomeAndID = matchNome || matchID;
-
     const matchTipo = !filters.tipo || item.tipo === filters.tipo;
     const matchClasse = !filters.classe || item.classe === filters.classe;
 

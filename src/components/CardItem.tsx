@@ -91,7 +91,7 @@ export default function CardItem({ card, handleOpenModal }: Props) {
           }}
         >
           <div className="bg-surface flex h-full flex-col items-center justify-center gap-6 rounded-2xl border border-yellow-600 bg-linear-to-b shadow-2xl">
-            <h3 className="font-belwe px-2 text-xl wrap-anywhere text-yellow-400">
+            <h3 className="font-belwe px-2 text-center text-xl wrap-anywhere text-yellow-400">
               {card.nome}
             </h3>
             <div className="flex flex-col gap-4">
