@@ -5,7 +5,7 @@ import CardForm from "./CardForm";
 import { useCards } from "../context/CardContext";
 
 export default function CardList() {
-  const { cards } = useCards();
+  const { filteredCards } = useCards();
   const [openModal, setOpen] = useState(false);
   const handleOpenModal = (isOpen: boolean) => setOpen(isOpen);
 
@@ -17,10 +17,10 @@ export default function CardList() {
           Minhas cartas
         </h3>
         <div
-          className={`grid w-full place-items-center gap-10 px-2 ${cards.length === 0 ? "col-span-1" : "sm:grid-cols-3 lg:grid-cols-5"}`}
+          className={`grid w-full place-items-center gap-10 px-2 ${filteredCards.length === 0 ? "col-span-1" : "sm:grid-cols-3 lg:grid-cols-5"}`}
         >
           <CreateCard handleOpenModal={handleOpenModal} />
-          {cards.map((card) => (
+          {filteredCards.map((card) => (
             <CardItem
               key={card.id}
               card={card}

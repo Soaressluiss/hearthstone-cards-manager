@@ -1,15 +1,12 @@
-import { useState } from "react";
 import { cardSchema } from "../schemas/CardSchema";
 import { Search, Trash2 } from "lucide-react";
+import { useCards } from "../context/CardContext";
 
 export default function CardFilter() {
-  const [search, setSearch] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [classe, setClasse] = useState("");
+  const { setFilters, filters } = useCards();
 
-  const tipos: string[] = cardSchema.shape.tipo.options;
-  const classes: string[] = cardSchema.shape.classe.options;
-  function handleChange() {}
+  const tipos = cardSchema.shape.tipo.options;
+  const classes = cardSchema.shape.classe.options;
 
   return (
     <section className="bg-surface border-primary-soft/40 flex w-full flex-col gap-4 rounded-xl border p-5">
@@ -22,12 +19,9 @@ export default function CardFilter() {
           <div className="relative w-full">
             <input
               type="search"
-              placeholder="Guardião da floresta ou 4"
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                handleChange();
-              }}
+              placeholder="Guardião da floresta ou ID"
+              value={filters.search}
+              onChange={({ target }) => setFilters({ search: target.value })}
               className="bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 pl-10 text-base outline-none"
             />
             <Search className="text-primary-soft pointer-events-none absolute top-4 left-3 size-4" />
@@ -40,11 +34,9 @@ export default function CardFilter() {
               Tipos
             </label>
             <select
-              onChange={(e) => {
-                setTipo(e.target.value);
-                handleChange();
-              }}
-              className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-base outline-none ${tipo.length >= 1 ? "text-base" : "text-muted"}`}
+              value={filters.tipo}
+              onChange={({ target }) => setFilters({ tipo: target.value })}
+              className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-base outline-none`}
             >
               <option value="">Tipo da Carta</option>
               {tipos.map((t) => (
@@ -60,11 +52,9 @@ export default function CardFilter() {
               Classes
             </label>
             <select
-              onChange={(e) => {
-                setClasse(e.target.value);
-                handleChange();
-              }}
-              className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-base outline-none ${classe.length >= 1 ? "text-base" : "text-muted"}`}
+              value={filters.classe}
+              onChange={({ target }) => setFilters({ classe: target.value })}
+              className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-base outline-none`}
             >
               <option value="">Classe da Carta</option>
               {classes.map((c) => (
@@ -75,7 +65,10 @@ export default function CardFilter() {
             </select>
           </div>
         </div>
-        <button className="border-primary/50 text-primary/50 hover:bg-primary/10 flex h-full cursor-pointer items-center justify-center rounded-md border px-4 py-3 transition">
+        <button
+          onClick={() => setFilters({ search: "", tipo: "", classe: "" })}
+          className="border-primary/50 text-primary/50 hover:bg-primary/10 flex h-full cursor-pointer items-center justify-center rounded-md border px-4 py-3 transition"
+        >
           <Trash2 />
         </button>
       </div>

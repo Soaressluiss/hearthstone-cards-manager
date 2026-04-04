@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import type { CardClass, CardType } from "../types/Card";
+import { mockCards } from "../mock/mockCards";
 
 export interface Card {
   id: number;
@@ -19,22 +20,42 @@ export interface Card {
   mana: number;
 }
 
+interface Filters {
+  search?: string;
+  tipo?: string;
+  classe?: string;
+}
 interface CardContextType {
-  cards: Card[];
   cardId: number | null;
   addCard: (card: Omit<Card, "id">) => void;
   updateCard: (id: number, updated: Partial<Card>) => void;
   deleteCard: (id: number) => void;
   getCardById: (id: number) => Card | undefined;
   handleCardId: (id: number | null) => void;
+  filteredCards: Card[];
+  filters: Filters;
+  setFilters: (filters: Filters) => void;
 }
 
 const CardContext = createContext<CardContextType | null>(null);
 
 export function CardProvider({ children }: { children: ReactNode }) {
-  const [cards, setCards] = useState<Card[]>([]);
+  const [cards, setCards] = useState<Card[]>(mockCards);
   const [cardId, setCardId] = useState<number | null>(null);
-  const currentId = useRef(0);
+  const currentId = useRef(mockCards.length);
+  const [filters, setFiltersState] = useState({
+    search: "",
+    tipo: "",
+
+    classe: "",
+  });
+
+  function setFilters(newFilters: Filters) {
+    setFiltersState((prev) => ({
+      ...prev,
+      ...newFilters,
+    }));
+  }
 
   function generateId() {
     currentId.current += 1;
@@ -68,16 +89,33 @@ export function CardProvider({ children }: { children: ReactNode }) {
     setCardId(id);
   }
 
+  const filteredCards = cards.filter((item) => {
+    const search = filters.search.toLowerCase();
+
+    const matchNome = item.nome.toLowerCase().includes(search);
+
+    const matchID = !!+search && item.id === +search;
+
+    const matchNomeAndID = matchNome || matchID;
+
+    const matchTipo = !filters.tipo || item.tipo === filters.tipo;
+    const matchClasse = !filters.classe || item.classe === filters.classe;
+
+    return matchNomeAndID && matchTipo && matchClasse;
+  });
+
   return (
     <CardContext.Provider
       value={{
-        cards,
         cardId,
         addCard,
         updateCard,
         deleteCard,
         getCardById,
         handleCardId,
+        setFilters,
+        filters,
+        filteredCards,
       }}
     >
       {children}
