@@ -10,7 +10,7 @@ export default function CardFilter() {
 
   return (
     <section className="bg-surface border-primary-soft/40 flex w-full flex-col gap-4 rounded-xl border p-5">
-      <h3 className="font-belwe text-primary text-2xl">Encontre Suas Cartas</h3>
+      <h3 className="font-belwe text-primary text-xl">ENCONSTRE SUAS CARTAS</h3>
       <div className="flex w-full items-end gap-4">
         <div className="flex flex-1 flex-col gap-2">
           <label className="text-muted font-belwe text-sm tracking-wider">

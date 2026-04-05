@@ -9,6 +9,7 @@ import { CardClass, CardType } from "../types/Card";
 import { Dialog, DialogClose, DialogContent, DialogTitle } from "./ui/dialog";
 import { useCards } from "../context/CardContext";
 import { useEffect } from "react";
+import { toast } from "sonner";
 
 interface CardFormProps {
   openModal: boolean;
@@ -56,11 +57,13 @@ export default function CardForm({
 
     if (!isEditing) {
       addCard(baseCard);
+      toast.success("Carta Adicionada.");
     } else {
       updateCard(cardId!, {
         ...baseCard,
         mana: selectedCard?.mana ?? baseCard.mana,
       });
+      toast.success("Carta Atualizada.");
     }
     reset();
     handleOpenModal(false);
@@ -76,8 +79,8 @@ export default function CardForm({
           onSubmit={handleSubmit(onSubmit)}
           className="bg-surface border-primary-soft/40 flex w-full flex-col gap-2 rounded-xl border p-5 pb-8"
         >
-          <DialogTitle className="font-belwe text-primary text-center text-3xl">
-            Adicionar carta
+          <DialogTitle className="font-belwe text-primary text-center text-2xl tracking-wide">
+            ADICIONAR CARTA
           </DialogTitle>
           <div className="flex flex-col gap-2">
             <label

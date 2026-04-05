@@ -3,6 +3,7 @@ import { Sword, Shield, Pencil, Trash2 } from "lucide-react";
 import CardHeader from "./CardHeader";
 import { useState } from "react";
 import { useCards, type Card } from "../context/CardContext";
+import { toast } from "sonner";
 
 interface Props {
   card: Card;
@@ -13,13 +14,12 @@ export default function CardItem({ card, handleOpenModal }: Props) {
   const [flipped, setFlipped] = useState(false);
   const { handleCardId, deleteCard } = useCards();
 
-  const onDelete = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const onDelete = () => {
     deleteCard(card.id);
+    toast.success("Carta Excluida.");
   };
 
-  const onEdit = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const onEdit = () => {
     handleCardId(card.id);
     handleOpenModal(true);
   };
@@ -96,14 +96,14 @@ export default function CardItem({ card, handleOpenModal }: Props) {
             </h3>
             <div className="flex flex-col gap-4">
               <button
-                onClick={(e) => onEdit(e)}
+                onClick={() => onEdit()}
                 className="font-belwe flex cursor-pointer items-center gap-2 rounded-lg bg-linear-to-r from-blue-700 to-blue-500 px-5 py-2 text-base shadow-lg transition-transform duration-200 hover:scale-105 hover:brightness-110 active:scale-95 active:brightness-90"
               >
                 <Pencil size={16} />
                 Editar
               </button>
               <button
-                onClick={(e) => onDelete(e)}
+                onClick={() => onDelete()}
                 className="font-belwe flex cursor-pointer items-center gap-2 rounded-lg bg-linear-to-r from-red-700 to-red-500 px-5 py-2 text-base shadow-lg transition-transform duration-200 hover:scale-105 hover:brightness-110 active:scale-95 active:brightness-90"
               >
                 <Trash2 size={16} />
