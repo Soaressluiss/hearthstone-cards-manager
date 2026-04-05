@@ -26,7 +26,7 @@ export default function CardFilter() {
       className="bg-surface border-primary-soft/40 flex w-full flex-col gap-4 rounded-xl border p-2.5 sm:p-5"
     >
       <h3 className="font-belwe text-primary text-center sm:text-lg lg:text-start lg:text-xl">
-        ENCONSTRE SUAS CARTAS
+        ENCONTRE SUAS CARTAS
       </h3>
       <div className="flex w-full flex-col items-end gap-2 sm:gap-4 lg:flex-row">
         <div className="flex w-full flex-1 flex-col gap-2">
