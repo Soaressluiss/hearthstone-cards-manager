@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import CardItem from "./CardItem";
-import CreateCard from "./CreateCard";
+import CreateCardButton from "./CreateCardButton";
 import CardForm from "./CardForm";
 import { useCards } from "../context/CardContext";
 import { Plus } from "lucide-react";
@@ -73,7 +73,7 @@ export default function CardList() {
             }}
             ref={refCreate}
           >
-            <CreateCard handleOpenModal={handleOpenModal} />
+            <CreateCardButton handleOpenModal={handleOpenModal} />
           </motion.div>
 
           {filteredCards.map((card) => (
