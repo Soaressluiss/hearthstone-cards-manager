@@ -2,6 +2,7 @@ import { cardSchema } from "../schemas/CardSchema";
 import { Search, Trash2 } from "lucide-react";
 import { useCards } from "../context/CardContext";
 import { toast } from "sonner";
+import { motion } from "motion/react";
 
 export default function CardFilter() {
   const { setFilters, filters } = useCards();
@@ -14,7 +15,16 @@ export default function CardFilter() {
     setFilters({ search: "", tipo: "", classe: "" });
   };
   return (
-    <section className="bg-surface border-primary-soft/40 flex w-full flex-col gap-4 rounded-xl border p-2.5 sm:p-5">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 90,
+        damping: 10,
+      }}
+      className="bg-surface border-primary-soft/40 flex w-full flex-col gap-4 rounded-xl border p-2.5 sm:p-5"
+    >
       <h3 className="font-belwe text-primary text-center sm:text-lg lg:text-start lg:text-xl">
         ENCONSTRE SUAS CARTAS
       </h3>
@@ -93,6 +103,6 @@ export default function CardFilter() {
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

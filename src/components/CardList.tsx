@@ -4,7 +4,12 @@ import CreateCard from "./CreateCard";
 import CardForm from "./CardForm";
 import { useCards } from "../context/CardContext";
 import { Plus } from "lucide-react";
-import { motion, AnimatePresence, useInView } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  type Variants,
+} from "motion/react";
 
 export default function CardList() {
   const [openModal, setOpen] = useState(false);
@@ -15,6 +20,31 @@ export default function CardList() {
 
   const handleOpenModal = (isOpen: boolean) => setOpen(isOpen);
 
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5,
+        delayChildren: 0.1,
+      },
+    },
+    exit: {},
+  };
+
+  const item: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 12,
+      },
+    },
+    exit: { opacity: 0, y: 40 },
+  };
   return (
     <>
       <CardForm openModal={openModal} handleOpenModal={handleOpenModal} />
@@ -23,25 +53,35 @@ export default function CardList() {
           MINHAS CARTAS
         </h3>
 
-        <div
+        <motion.div
+          initial="hidden"
+          animate="animate"
+          variants={container}
+          exit="exit"
           className={`grid w-full place-items-center gap-8 px-2 md:gap-10 ${
             filteredCards.length === 0
               ? "col-span-1"
               : "min-[34.375rem]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
           }`}
         >
-          <div ref={refCreate}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              transition: { duration: 0.6, ease: "easeIn" },
+            }}
+            ref={refCreate}
+          >
             <CreateCard handleOpenModal={handleOpenModal} />
-          </div>
+          </motion.div>
 
           {filteredCards.map((card) => (
-            <CardItem
-              key={card.id}
-              card={card}
-              handleOpenModal={handleOpenModal}
-            />
+            <motion.div key={card.id} variants={item}>
+              <CardItem card={card} handleOpenModal={handleOpenModal} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <AnimatePresence>
           {showButton && (
