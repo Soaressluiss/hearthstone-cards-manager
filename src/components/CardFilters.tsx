@@ -54,9 +54,9 @@ export default function CardFilter() {
               <select
                 value={filters.tipo}
                 onChange={({ target }) => setFilters({ tipo: target.value })}
-                className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]`}
+                className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-xs outline-none sm:text-[1rem] ${!filters.tipo ? "text-muted" : "text-base"} `}
               >
-                <option className="text-xs sm:text-[1rem]" value="">
+                <option className="bg-surface text-xs sm:text-[1rem]" value="">
                   Tipo da Carta
                 </option>
                 {tipos.map((t) => (
@@ -78,9 +78,9 @@ export default function CardFilter() {
               <select
                 value={filters.classe}
                 onChange={({ target }) => setFilters({ classe: target.value })}
-                className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]`}
+                className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-xs outline-none sm:text-[1rem] ${!filters.classe ? "text-muted" : "text-base"}`}
               >
-                <option className="text-xs sm:text-[1rem]" value="">
+                <option className="bg-surface text-xs sm:text-[1rem]" value="">
                   Classe da Carta
                 </option>
                 {classes.map((c) => (
