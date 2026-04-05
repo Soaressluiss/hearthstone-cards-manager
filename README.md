@@ -1,34 +1,42 @@
 # 🃏 Hearthstone Cards Manager
 
-Aplicação web para gerenciamento de cartas inspiradas no universo de [**Hearthstone**](https://hearthstone.blizzard.com/).
-Permite criar, editar, excluir e consultar cartas com base em diferentes critérios, seguindo regras específicas do jogo.
+Aplicação web desenvolvida como **desafio técnico para processo seletivo**, inspirada no universo de [**Hearthstone**](https://hearthstone.blizzard.com/).
 
-## 🎯 Objetivo
+O projeto consiste em um gerenciador de cartas que permite criar, editar, excluir e consultar registros, seguindo regras específicas de atributos, tipos e classes.
 
-Desenvolver uma aplicação Front-end para gerenciamento de cartas de um baralho, respeitando regras de atributos, tipos e classes, com persistência de dados no navegador por meio de LocalStorage.
+## 🎯 Contexto do desafio
 
-O projeto é inspirado no jogo oficial [**Hearthstone**](https://hearthstone.blizzard.com/) e tem como objetivo reproduzir, de forma simplificada, a lógica de criação, edição e consulta de cartas.
+Este projeto foi desenvolvido como parte de um **teste técnico para vaga de Front-end**, com o objetivo de avaliar:
 
-A aplicação foi desenvolvida seguindo boas práticas de Front-end, com foco em organização de código, tipagem com TypeScript e validação de dados.
+- Organização e estrutura do código
+- Manipulação de estado
+- Implementação de CRUD completo
+- Validação de dados
+- Experiência do usuário
+
+A proposta era simular um sistema de gerenciamento de cartas com regras semelhantes às do jogo.
 
 ## 🚀 Deploy
 
-🔗 **Acesse o projeto online:** [Hearthstone Cards Manager🃏](https://hearthstone-cards-manager.vercel.app/)
+🔗 **Acesse o projeto online:**
+[https://hearthstone-cards-manager.vercel.app/](https://hearthstone-cards-manager.vercel.app/)
 
-## 📖 Descrição
+## 📖 Sobre a solução
 
-O **Hearthstone Cards Manager** permite que o usuário gerencie cartas de forma dinâmica, simulando regras básicas do jogo:
+Para resolver o desafio, desenvolvi uma aplicação front-end completa que permite o gerenciamento dinâmico de cartas.
 
-- Criação de cartas com atributos personalizados
-- Organização por classes e tipos
-- Controle de valores como ataque, defesa e custo de mana
-- Persistência dos dados diretamente no navegador
+A solução inclui:
 
-O foco principal é entregar uma aplicação moderna, fluida e com ótima experiência de uso.
+- Criação e edição com validação de dados
+- Filtros para facilitar a busca
+- Persistência local para simular armazenamento
+- Interface responsiva e com feedback visual
 
-## ⚙️ Funcionalidades
+Busquei não apenas atender aos requisitos, mas também entregar uma experiência fluida e bem estruturada.
 
-### ✅ CRUD Completo
+## ⚙️ Funcionalidades implementadas
+
+### ✅ CRUD completo
 
 - Criar cartas
 - Editar cartas
@@ -38,26 +46,59 @@ O foco principal é entregar uma aplicação moderna, fluida e com ótima experi
 ### 🔍 Filtros
 
 - Por ID
-- Por Nome
-- Por Classe
-- Por Tipo
+- Por nome
+- Por classe
+- Por tipo
 
 ### 💾 Persistência
 
-- Armazenamento com LocalStorage
+- Armazenamento utilizando LocalStorage
 
-## ✨ Diferenciais
+## ✨ Diferenciais aplicados
 
-- 🎬 Animações com Motion
+Mesmo sendo um desafio técnico, optei por ir além do básico:
+
+- 🎬 Animações com Motion para melhorar a experiência
 - 🚀 Tela de onboarding/loading
-- 🎨 UI moderna com TailwindCSS
+- 🎨 Interface moderna com TailwindCSS
 - 🔔 Feedback com toasts (Sonner)
-- 🧠 Validação com Zod + React Hook Form
-- ⚡ Performance otimizada
+- 🧠 Validação robusta com Zod + React Hook Form
+- ⚡ Cuidados com performance e renderização
+
+## 🧠 Decisões técnicas
+
+- **React Hook Form + Zod**
+  Utilizados para validação eficiente e tipada, reduzindo complexidade nos formulários.
+
+- **Context API**
+  Escolhida para centralizar o estado das cartas e evitar prop drilling.
+
+- **LocalStorage**
+  Implementado como forma de persistência, atendendo ao escopo do desafio sem necessidade de backend.
+
+- **Componentização**
+  Estruturei a aplicação em componentes reutilizáveis, pensando em manutenção e escalabilidade.
+
+---
+
+## ⚔️ Desafios durante o desenvolvimento
+
+- Garantir a consistência dos dados ao editar cartas
+- Manter as regras de atributos válidas em todas as operações
+- Evitar re-renderizações desnecessárias na listagem
+- Organizar o estado de forma simples, mas escalável
+
+## 🔮 Possíveis melhorias
+
+Caso o projeto evoluísse além do desafio:
+
+- Integração com API (backend)
+- Persistência em banco de dados
+- Paginação da lista
 
 ## 🧪 Tecnologias utilizadas
 
-| Tecnologia      | Versão  | Usada para  |
+| Tecnologia      | Versão  | Uso         |
 | --------------- | ------- | ----------- |
 | React           | 19.2.4  | Interface   |
 | TypeScript      | 5.9.3   | Tipagem     |
@@ -67,19 +108,13 @@ O foco principal é entregar uma aplicação moderna, fluida e com ótima experi
 | Zod             | 4.3.6   | Validação   |
 | Motion          | 12.38.0 | Animações   |
 
----
-
-## 💻 Inicie localmente
+## 💻 Rodando localmente
 
 ### ✅ Pré-requisitos
 
 Antes de começar, você precisa ter instalado:
 
-- [Node.js](https://nodejs.org/) (versão 18 ou superior)
-
-- Gerenciador de pacotes:
-  - npm (já vem com Node) ou
-  - yarn / pnpm
+[Node.js](https://nodejs.org/) (versão 18 ou superior)
 
 ### ⚙️ Passo a passo
 
