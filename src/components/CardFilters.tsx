@@ -30,11 +30,15 @@ export default function CardFilter() {
       </h3>
       <div className="flex w-full flex-col items-end gap-2 sm:gap-4 lg:flex-row">
         <div className="flex w-full flex-1 flex-col gap-2">
-          <label className="text-muted font-belwe text-xs tracking-wider sm:text-sm">
+          <label
+            htmlFor="nomeOrID"
+            className="text-muted font-belwe text-xs tracking-wider sm:text-sm"
+          >
             Nome ou ID
           </label>
           <div className="relative w-full">
             <input
+              id="nomeOrID"
               type="search"
               placeholder="Guardião da floresta ou ID"
               value={filters.search}
@@ -48,10 +52,14 @@ export default function CardFilter() {
         <div className="flex w-full flex-1 flex-col gap-2 lg:flex-row lg:gap-4">
           <div className="flex flex-1 gap-2 lg:gap-4">
             <div className="flex flex-1 flex-col gap-2">
-              <label className="text-muted font-belwe text-xs tracking-wider sm:text-sm">
+              <label
+                htmlFor="tipos"
+                className="text-muted font-belwe text-xs tracking-wider sm:text-sm"
+              >
                 Tipos
               </label>
               <select
+                id="tipos"
                 value={filters.tipo}
                 onChange={({ target }) => setFilters({ tipo: target.value })}
                 className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-xs outline-none sm:text-[1rem] ${!filters.tipo ? "text-muted" : "text-base"} `}
@@ -72,10 +80,14 @@ export default function CardFilter() {
             </div>
 
             <div className="flex flex-1 flex-col gap-2">
-              <label className="text-muted font-belwe text-xs tracking-wider sm:text-sm">
+              <label
+                htmlFor="classes"
+                className="text-muted font-belwe text-xs tracking-wider sm:text-sm"
+              >
                 Classes
               </label>
               <select
+                id="classes"
                 value={filters.classe}
                 onChange={({ target }) => setFilters({ classe: target.value })}
                 className={`bg-background/40 focus:border-primary font-belwe w-full rounded-lg border border-white/10 px-3 py-3 text-xs outline-none sm:text-[1rem] ${!filters.classe ? "text-muted" : "text-base"}`}

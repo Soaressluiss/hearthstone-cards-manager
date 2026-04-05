@@ -116,10 +116,14 @@ export default function CardForm({
 
           <div className="flex flex-col gap-1 min-[28.125rem]:flex-row sm:gap-2">
             <div className="flex w-full flex-col gap-1 sm:gap-2">
-              <label className="text-muted font-belwe text-xs tracking-wider md:text-sm">
+              <label
+                htmlFor="ataque"
+                className="text-muted font-belwe text-xs tracking-wider md:text-sm"
+              >
                 Ataque
               </label>
               <input
+                id="ataque"
                 type="number"
                 {...register("ataque", { valueAsNumber: true })}
                 className="bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none"
@@ -128,10 +132,14 @@ export default function CardForm({
             </div>
 
             <div className="flex w-full flex-col gap-1 sm:gap-2">
-              <label className="text-muted tracking-widre font-belwe text-xs md:text-sm">
+              <label
+                htmlFor="defesa"
+                className="text-muted tracking-widre font-belwe text-xs md:text-sm"
+              >
                 Defesa
               </label>
               <input
+                id="defesa"
                 type="number"
                 {...register("defesa", { valueAsNumber: true })}
                 className="bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none"
@@ -141,10 +149,14 @@ export default function CardForm({
           </div>
 
           <div className="flex flex-col gap-1 sm:gap-2">
-            <label className="text-muted tracking-widre font-belwe text-xs md:text-sm">
+            <label
+              htmlFor="tipo"
+              className="text-muted tracking-widre font-belwe text-xs md:text-sm"
+            >
               Tipo
             </label>
             <select
+              id="tipo"
               {...register("tipo")}
               className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]`}
             >
@@ -165,10 +177,14 @@ export default function CardForm({
           </div>
 
           <div className="flex flex-col gap-1 sm:gap-2">
-            <label className="text-muted tracking-widre font-belwe text-xs md:text-sm">
+            <label
+              htmlFor="classe"
+              className="text-muted tracking-widre font-belwe text-xs md:text-sm"
+            >
               Classe
             </label>
             <select
+              id="classe"
               {...register("classe")}
               className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]`}
             >
