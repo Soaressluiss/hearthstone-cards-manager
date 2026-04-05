@@ -1,74 +1,114 @@
-# React + TypeScript + Vite
+# 🃏 Hearthstone Cards Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web para gerenciamento de cartas inspiradas no universo de [**Hearthstone**](https://hearthstone.blizzard.com/).
+Permite criar, editar, excluir e consultar cartas com base em diferentes critérios, seguindo regras específicas do jogo.
 
-Currently, two official plugins are available:
+## 🎯 Objetivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Desenvolver uma aplicação Front-end para gerenciamento de cartas de um baralho, respeitando regras de atributos, tipos e classes, com persistência de dados no navegador por meio de LocalStorage.
 
-## React Compiler
+O projeto é inspirado no jogo oficial [**Hearthstone**](https://hearthstone.blizzard.com/) e tem como objetivo reproduzir, de forma simplificada, a lógica de criação, edição e consulta de cartas.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+A aplicação foi desenvolvida seguindo boas práticas de Front-end, com foco em organização de código, tipagem com TypeScript e validação de dados.
 
-## Expanding the ESLint configuration
+## 🚀 Deploy
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🔗 **Acesse o projeto online:** [Hearthstone Cards Manager🃏](https://hearthstone-cards-manager.vercel.app/)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📖 Descrição
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+O **Hearthstone Cards Manager** permite que o usuário gerencie cartas de forma dinâmica, simulando regras básicas do jogo:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Criação de cartas com atributos personalizados
+- Organização por classes e tipos
+- Controle de valores como ataque, defesa e custo de mana
+- Persistência dos dados diretamente no navegador
+
+O foco principal é entregar uma aplicação moderna, fluida e com ótima experiência de uso.
+
+## ⚙️ Funcionalidades
+
+### ✅ CRUD Completo
+
+- Criar cartas
+- Editar cartas
+- Excluir cartas
+- Listar cartas
+
+### 🔍 Filtros
+
+- Por ID
+- Por Nome
+- Por Classe
+- Por Tipo
+
+### 💾 Persistência
+
+- Armazenamento com LocalStorage
+
+## ✨ Diferenciais
+
+- 🎬 Animações com Motion
+- 🚀 Tela de onboarding/loading
+- 🎨 UI moderna com TailwindCSS
+- 🔔 Feedback com toasts (Sonner)
+- 🧠 Validação com Zod + React Hook Form
+- ⚡ Performance otimizada
+
+## 🧪 Tecnologias utilizadas
+
+| Tecnologia      | Versão  | Usada para  |
+| --------------- | ------- | ----------- |
+| React           | 19.2.4  | Interface   |
+| TypeScript      | 5.9.3   | Tipagem     |
+| Vite            | 8.0.1   | Build       |
+| TailwindCSS     | 4.2.2   | Estilização |
+| React Hook Form | 7.72.0  | Formulários |
+| Zod             | 4.3.6   | Validação   |
+| Motion          | 12.38.0 | Animações   |
+
+---
+
+## 💻 Inicie localmente
+
+### ✅ Pré-requisitos
+
+Antes de começar, você precisa ter instalado:
+
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+
+- Gerenciador de pacotes:
+  - npm (já vem com Node) ou
+  - yarn / pnpm
+
+### ⚙️ Passo a passo
+
+#### 1. Clone o repositório
+
+```bash
+git clone https://github.com/Soaressluiss/hearthstone-cards-manager.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### 2. Acesse a pasta do projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd hearthstone-cards-manager
 ```
-# hearthstone-cards-manager
+
+#### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+#### 4. Rode o projeto
+
+```bash
+npm run dev
+```
+
+#### 5. Acesse no navegador
+
+```bash
+http://localhost:5173
+```

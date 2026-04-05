@@ -19,7 +19,6 @@ export default function Header() {
       <div className="flex flex-col items-center text-center">
         <motion.img
           layoutId="logo"
-          transition={{ type: "spring", stiffness: 120, damping: 20 }}
           src={Logo}
           alt="Hearthstone Logo"
           className="h-15 sm:h-18"
