@@ -23,7 +23,7 @@ export default function CreateCard({ handleOpenModal }: CreateCardProps) {
         <div className="border-muted/70 flex size-16 items-center justify-center rounded-full border border-dashed">
           <Plus size={30} className="text-muted/50" />
         </div>
-        <span className="text-muted/50 font-sans font-semibold tracking-wide">
+        <span className="text-muted/50 font-sans text-sm font-semibold tracking-wide md:text-[1rem]">
           NOVA CARTA
         </span>
       </div>

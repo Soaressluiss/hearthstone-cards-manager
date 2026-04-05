@@ -110,9 +110,6 @@ export default function CardItem({ card, handleOpenModal }: Props) {
                 Excluir
               </button>
             </div>
-            <p className="block font-sans text-xs tracking-wide text-gray-400 lg:hidden">
-              Toque para voltar
-            </p>
           </div>
         </div>
       </motion.div>

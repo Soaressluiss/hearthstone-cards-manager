@@ -40,7 +40,7 @@ export default function CardHeader({ card }: { card: CardFormData }) {
   const ClasseIcon = classeMap[classe].icon || HelpCircle;
 
   return (
-    <div className="border-primary bg-background/10 rounded-xl border">
+    <div className="border-primary/50 bg-background/10 rounded-xl border">
       <div className="flex h-24 w-full flex-col p-1">
         <div className="flex justify-center gap-2 text-[0.625rem] font-semibold">
           <span

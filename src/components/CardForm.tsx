@@ -77,15 +77,15 @@ export default function CardForm({
       >
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-surface border-primary-soft/40 flex w-full flex-col gap-2 rounded-xl border p-5 pb-8"
+          className="bg-surface border-primary-soft/40 flex w-full flex-col gap-1 rounded-xl border p-3 pb-8 sm:gap-2 md:p-5"
         >
-          <DialogTitle className="font-belwe text-primary text-center text-2xl tracking-wide">
+          <DialogTitle className="font-belwe text-primary mb-3 text-center text-lg tracking-wide md:text-2xl">
             ADICIONAR CARTA
           </DialogTitle>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1 sm:gap-2">
             <label
               htmlFor="nome"
-              className="text-muted font-belwe text-sm tracking-wider"
+              className="text-muted font-belwe text-xs tracking-wider md:text-sm"
             >
               Nome da Carta
             </label>
@@ -93,15 +93,15 @@ export default function CardForm({
               id="nome"
               {...register("nome")}
               placeholder="Guardião da Floresta"
-              className="bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none"
+              className="bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]"
             />
             <p className="text-xs text-red-400">{errors.nome?.message}</p>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1 sm:gap-2">
             <label
               htmlFor="descricao"
-              className="text-muted font-belwe text-sm tracking-wider"
+              className="text-muted font-belwe text-xs tracking-wider md:text-sm"
             >
               Descrição
             </label>
@@ -109,14 +109,14 @@ export default function CardForm({
               id="descricao"
               {...register("descricao")}
               placeholder="Protege a natureza e seus aliados com força ancestral."
-              className="bg-background/40 focus:border-primary font-belwe max-h-50 min-h-30 rounded-lg border border-white/10 px-3 py-3 text-base outline-none"
+              className="bg-background/40 focus:border-primary font-belwe max-h-50 min-h-30 rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]"
             />
             <p className="text-xs text-red-400">{errors.descricao?.message}</p>
           </div>
 
-          <div className="flex gap-3">
-            <div className="flex w-1/2 flex-col gap-2">
-              <label className="text-muted font-belwe text-sm tracking-wider">
+          <div className="flex flex-col gap-1 min-[28.125rem]:flex-row sm:gap-2">
+            <div className="flex w-full flex-col gap-1 sm:gap-2">
+              <label className="text-muted font-belwe text-xs tracking-wider md:text-sm">
                 Ataque
               </label>
               <input
@@ -127,8 +127,8 @@ export default function CardForm({
               <p className="text-xs text-red-400">{errors.ataque?.message}</p>
             </div>
 
-            <div className="flex w-1/2 flex-col gap-2">
-              <label className="text-muted tracking-widre font-belwe text-sm">
+            <div className="flex w-full flex-col gap-1 sm:gap-2">
+              <label className="text-muted tracking-widre font-belwe text-xs md:text-sm">
                 Defesa
               </label>
               <input
@@ -140,13 +140,13 @@ export default function CardForm({
             </div>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-muted tracking-widre font-belwe text-sm">
+          <div className="flex flex-col gap-1 sm:gap-2">
+            <label className="text-muted tracking-widre font-belwe text-xs md:text-sm">
               Tipo
             </label>
             <select
               {...register("tipo")}
-              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none`}
+              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]`}
             >
               <option className="bg-surface" value="">
                 Selecione seu tipo
@@ -164,13 +164,13 @@ export default function CardForm({
             <p className="text-xs text-red-400">{errors.tipo?.message}</p>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-muted tracking-widre font-belwe text-sm">
+          <div className="flex flex-col gap-1 sm:gap-2">
+            <label className="text-muted tracking-widre font-belwe text-xs md:text-sm">
               Classe
             </label>
             <select
               {...register("classe")}
-              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base outline-none`}
+              className={`bg-background/40 focus:border-primary font-belwe rounded-lg border border-white/10 px-3 py-3 text-base text-xs outline-none sm:text-[1rem]`}
             >
               <option className="bg-surface" value="">
                 Selecione sua classe
@@ -188,7 +188,7 @@ export default function CardForm({
             <p className="text-xs text-red-400">{errors.classe?.message}</p>
           </div>
 
-          <div className="mt-2 flex items-center justify-center gap-4 self-end">
+          <div className="mt-2 flex items-center justify-center gap-4 sm:self-end">
             <DialogClose
               onClick={() => reset(defaultValues)}
               className="font-belwe text-muted h-full cursor-pointer px-4 py-2 hover:text-base"

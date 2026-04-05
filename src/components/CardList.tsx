@@ -12,12 +12,12 @@ export default function CardList() {
   return (
     <>
       <CardForm openModal={openModal} handleOpenModal={handleOpenModal} />
-      <section className="flex w-full flex-col gap-10 rounded-lg bg-stone-900 p-5">
-        <h3 className="font-belwe text-primary text-center text-2xl">
+      <section className="border-primary/40 relative flex w-full flex-col gap-5 rounded-lg border bg-stone-900 p-5 md:gap-10">
+        <h3 className="font-belwe text-primary text-center text-lg md:text-xl">
           MINHAS CARTAS
         </h3>
         <div
-          className={`grid w-full place-items-center gap-10 px-2 ${filteredCards.length === 0 ? "col-span-1" : "sm:grid-cols-3 lg:grid-cols-5"}`}
+          className={`grid w-full place-items-center gap-8 px-2 md:gap-10 ${filteredCards.length === 0 ? "col-span-1" : "min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"}`}
         >
           <CreateCard handleOpenModal={handleOpenModal} />
           {filteredCards.map((card) => (
