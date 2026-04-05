@@ -1,6 +1,7 @@
 import { cardSchema } from "../schemas/CardSchema";
 import { Search, Trash2 } from "lucide-react";
 import { useCards } from "../context/CardContext";
+import { toast } from "sonner";
 
 export default function CardFilter() {
   const { setFilters, filters } = useCards();
@@ -8,6 +9,10 @@ export default function CardFilter() {
   const tipos = cardSchema.shape.tipo.options;
   const classes = cardSchema.shape.classe.options;
 
+  const handleResetFields = () => {
+    toast.info("Filtros limpos.");
+    setFilters({ search: "", tipo: "", classe: "" });
+  };
   return (
     <section className="bg-surface border-primary-soft/40 flex w-full flex-col gap-4 rounded-xl border p-2.5 sm:p-5">
       <h3 className="font-belwe text-primary text-center sm:text-lg lg:text-start lg:text-xl">
@@ -81,7 +86,7 @@ export default function CardFilter() {
             </div>
           </div>
           <button
-            onClick={() => setFilters({ search: "", tipo: "", classe: "" })}
+            onClick={() => handleResetFields()}
             className="border-primary/50 text-primary/50 hover:bg-primary/10 flex h-full cursor-pointer items-center justify-center self-end rounded-md border px-3 py-2 transition sm:px-4 sm:py-3"
           >
             <Trash2 />
